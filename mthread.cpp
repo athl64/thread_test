@@ -37,6 +37,9 @@ void mThread::readyRead()
     FileData = parse->getFileInfo(HeadData.filePath);
     parse->writeLog(&HeadData);
 
+    //for debug
+    //parse->writeStringToFile(dataReceived,"RequestLogFull.txt");
+
     if(HeadData.method == "GET")
     {
         if(FileData.fileOk)

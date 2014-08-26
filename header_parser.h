@@ -11,6 +11,7 @@ public:
     ~header_parser();
     headerStorage getHeaderData(QString HeadString);
     int writeLog(headerStorage *storage);
+    int writeStringToFile(QString text, QString fileName);
     fileInfoStorage getFileInfo(QString filePath);
 
 private:
