@@ -15,7 +15,7 @@ public:
 signals:
 
 public slots:
-    void startServer();
+    void startServer(qint32 port = listenPort);
 
 protected:
     void incomingConnection(int sockID);

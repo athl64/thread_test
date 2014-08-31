@@ -5,15 +5,15 @@ mServer::mServer(QObject *parent) :
 {
 }
 
-void mServer::startServer()
+void mServer::startServer(qint32 port)
 {
-    if(!this->listen(listenHost,listenPort))
+    if(!this->listen(listenHost,port))
     {
         qDebug() << "Can not start server";
     }
     else
     {
-        qDebug() << "Server started sucessfuly";
+        qDebug() << "Server started sucessfuly, listen port " << port;
     }
 }
 

@@ -45,6 +45,7 @@ void mThread::readyRead()
         if(FileData.fileOk)
         {
             dataSent.append("HTTP/1.1 200 OK \r\n");
+            dataSent.append("Server: Dvixi HTTP dev\r\n");
             dataSent.append("Content-Length: " + QString::number(FileData.contentLength) + "\r\n");
             dataSent.append("Content-Type: " + FileData.mimeType + "\r\n\r\n");
             sock->write(dataSent);
