@@ -8,7 +8,8 @@
 const qint32 listenPort = 3000;                         //listen port
 const QHostAddress listenHost = QHostAddress::Any;      //listen host
 const qint64 headLen = 8000;                            //HTTP header max lenghth
-const qint64 fileLen = 50000000;                        //file max length
+const qint64 fileLen = 5000000000;                      //file max length
+const qint64 fileReadBuferLen = 1000;                   //read files by X-bytes blocks
 
 struct headerStorage {
     QString method;

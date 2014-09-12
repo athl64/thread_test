@@ -53,8 +53,16 @@ void mThread::readyRead()
             QFile fileToSend(HeadData.filePath);
             if(fileToSend.open(QIODevice::ReadOnly))
             {
-                QByteArray fileContent = fileToSend.readAll();
-                sock->write(fileContent);
+                QByteArray fileContentPart = 0;
+                qint64 buferPos = 0;
+                while(buferPos < FileData.contentLength)
+                {
+                    fileToSend.seek(buferPos);
+                    fileContentPart = fileToSend.read(fileReadBuferLen);
+                    sock->write(fileContentPart);
+                    sock->flush();
+                    buferPos += fileReadBuferLen;
+                }
             }
         }
         else
