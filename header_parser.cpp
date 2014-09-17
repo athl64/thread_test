@@ -83,7 +83,7 @@ int header_parser::writeStringToFile(QString text, QString fileName)
 
     if(logFile.open(QIODevice::Append))
     {
-        streamLog << text << "\r\n**********************************separator**********************************************\r\n";
+        streamLog << "\r\n**********************************separator**********************************************\r\n" << text << "\r\n";
         logFile.close();
     }
     else
@@ -129,7 +129,7 @@ void header_parser::repairFilePath(QString *filePath)
         filePath->remove(filePath->length() - 1,1);
     }
     //remove host
-    if(filePath->indexOf("http://",0))
+    if(filePath->indexOf("http://",0) >= 0)
     {
         int pos = 0;
         pos = filePath->indexOf("/",7);
@@ -141,4 +141,8 @@ void header_parser::repairFilePath(QString *filePath)
         filePath->clear();
         filePath->append("index.htm");
     }
+    //if Windows - replace slashes
+#ifdef WIN32
+    filePath->replace("/","\\");
+#endif
 }

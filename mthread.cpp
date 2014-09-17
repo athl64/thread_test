@@ -20,7 +20,7 @@ void mThread::run()
 
     //qDebug() << "thread for socket ID " << sockDescriptor;
 
-    //qDebug() << "connecting from IP: " << sock->peerAddress().toString();
+    qDebug() << "connection from IP: " << sock->peerAddress().toString();
 
     exec();
 }
@@ -67,7 +67,7 @@ void mThread::readyRead()
         }
         else
         {
-            dataSent.append("HTTP/1.1 404 \r\n\r\nFile too large or not found, sorry");
+            dataSent.append("HTTP/1.1 404 \r\n\r\nFile not found");
             sock->write(dataSent);
         }
     }

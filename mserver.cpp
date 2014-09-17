@@ -19,7 +19,7 @@ void mServer::startServer(qint32 port)
 
 void mServer::incomingConnection(int sockDescriptor)
 {
-    qDebug() << "connecting to " << sockDescriptor;
+    //qDebug() << "connecting to " << sockDescriptor;
     mThread *thr = new mThread(sockDescriptor,this);
     connect(thr,SIGNAL(finished()),thr,SLOT(deleteLater()));
     thr->start();
